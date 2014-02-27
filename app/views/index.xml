@@ -1,0 +1,9 @@
+<Alloy>
+	<Collection src = "books"/>
+	<Window class="container">
+		<!-- Add Table View and Table Row -->
+		<TableView dataCollection = "books">
+			<TableViewRow title = "{title}" author="{author}"></TableViewRow>
+		</TableView>
+	</Window>
+</Alloy>
