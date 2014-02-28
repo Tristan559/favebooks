@@ -13,8 +13,18 @@ function Controller() {
                 author: "undefined" != typeof __alloyId3.__transform["author"] ? __alloyId3.__transform["author"] : __alloyId3.get("author")
             });
             rows.push(__alloyId5);
+            showBook ? __alloyId5.addEventListener("click", showBook) : __defers["__alloyId5!click!showBook"] = true;
         }
         $.__views.__alloyId2.setData(rows);
+    }
+    function showBook(event) {
+        var selectedBook = event.source;
+        var args = {
+            title: selectedBook.title,
+            author: selectedBook.author
+        };
+        var bookView = Alloy.createController("bookDetails", args).getView();
+        bookView.open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
@@ -23,6 +33,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     Alloy.Collections.instance("books");
     $.__views.index = Ti.UI.createWindow({
         backgroundColor: "white",
@@ -47,6 +58,7 @@ function Controller() {
     myBooks.add(book);
     book.save();
     $.index.open();
+    __defers["__alloyId5!click!showBook"] && __alloyId5.addEventListener("click", showBook);
     _.extend($, exports);
 }
 
