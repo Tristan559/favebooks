@@ -1,4 +1,21 @@
-
-".container" : {
-	backgroundColor : 'white'
+".container" : 
+{
+	backgroundColor : 'white',
+},
+"#titleLabel":	
+{
+	font: 
+	{
+		fontSize: '30',
+	},
+	left : '10'
+},
+"#authorLabel":
+{
+	font:
+	{
+		fontsize: '20'
+	},
+	left: '10'
 }
+
