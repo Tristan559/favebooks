@@ -31,6 +31,20 @@ function showBook(event)
     }
 }
 
+function addBook()
+{
+    var myAddBook = Alloy.createController("addbook",{}).getView();
+    
+    if (OS_IOS) 
+    {
+        $.navGroupWin.openWindow(myAddBook);
+    }
+    if (OS_ANDROID) 
+    {
+        myAddBook.open();
+    }
+}
+
 // Open main window
 if(OS_IOS) 
 { 
