@@ -22,9 +22,22 @@ function showBook(event)
 	};
 	
 	var bookView = Alloy.createController("bookdetails", args).getView();
-	bookView.open();
+	
+    if (OS_IOS) {
+        $.navGroupWin.openWindow(bookView);
+    }
+    if (OS_ANDROID) {
+        bookView.open();
+    }
 }
 
 // Open main window
-$.index.open(); 
+if(OS_IOS) 
+{ 
+   $.navGroupWin.open();
+} 
+if (OS_ANDROID) 
+{ 
+   $.index.open(); 
+}
 
