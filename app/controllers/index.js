@@ -21,7 +21,7 @@ function showBook(event)
 		author : selectedBook.author
 	};
 	
-	var bookView = Alloy.createController("bookDetails", args).getView();
+	var bookView = Alloy.createController("bookdetails", args).getView();
 	bookView.open();
 }
 
