@@ -1,3 +1,7 @@
+// module requires
+var NavMenu = require('ui/navmenu');
+var navMenu = new NavMenu($.navGroupWin || null, $.index || null);
+
 // get books collection
 var myBooks = Alloy.Collections.books;
 
@@ -22,36 +26,14 @@ function showBook(event)
 	};
 	
 	var bookView = Alloy.createController("bookdetails", args).getView();
-	
-    if (OS_IOS) {
-        $.navGroupWin.openWindow(bookView);
-    }
-    if (OS_ANDROID) {
-        bookView.open();
-    }
+	navMenu.openView(bookView);
 }
 
 function addBook()
 {
-    var myAddBook = Alloy.createController("addbook",{}).getView();
-    
-    if (OS_IOS) 
-    {
-        $.navGroupWin.openWindow(myAddBook);
-    }
-    if (OS_ANDROID) 
-    {
-        myAddBook.open();
-    }
+    var addBookView = Alloy.createController("addbook",{}).getView();
+	navMenu.openView(addBookView);
 }
 
 // Open main window
-if(OS_IOS) 
-{ 
-   $.navGroupWin.open();
-} 
-if (OS_ANDROID) 
-{ 
-   $.index.open(); 
-}
-
+navMenu.open();

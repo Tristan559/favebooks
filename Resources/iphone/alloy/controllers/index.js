@@ -24,11 +24,11 @@ function Controller() {
             author: selectedBook.author
         };
         var bookView = Alloy.createController("bookdetails", args).getView();
-        $.navGroupWin.openWindow(bookView);
+        navMenu.openView(bookView);
     }
     function addBook() {
-        var myAddBook = Alloy.createController("addbook", {}).getView();
-        $.navGroupWin.openWindow(myAddBook);
+        var addBookView = Alloy.createController("addbook", {}).getView();
+        navMenu.openView(addBookView);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
@@ -71,6 +71,8 @@ function Controller() {
         __alloyId9.off("fetch destroy change add remove reset", __alloyId10);
     };
     _.extend($, $.__views);
+    var NavMenu = require("ui/navmenu");
+    var navMenu = new NavMenu($.navGroupWin || null, $.index || null);
     var myBooks = Alloy.Collections.books;
     var book = Alloy.createModel("books", {
         title: "Great Expectations",
@@ -78,7 +80,7 @@ function Controller() {
     });
     myBooks.add(book);
     book.save();
-    $.navGroupWin.open();
+    navMenu.open();
     __defers["__alloyId8!click!showBook"] && __alloyId8.addEventListener("click", showBook);
     __defers["$.__views.add!click!addBook"] && $.__views.add.addEventListener("click", addBook);
     _.extend($, exports);
