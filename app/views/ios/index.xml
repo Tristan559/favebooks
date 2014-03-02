@@ -2,10 +2,14 @@
 	<Collection src = "books"/>
 	<NavigationWindow id="navGroupWin">
 		<Window class="container">
-			<!-- Add Table View and Table Row -->
-			<TableView dataCollection = "books">
-				<TableViewRow title = "{title}" author="{author}" onClick="showBook"></TableViewRow>
-			</TableView>
+			<!--- slide menu widget --->
+			<Require type="widget" src="com.mcongrove.slideMenu" id="SlideMenu" />
+			<View id="AppWrapper">
+				<!-- Add Table View and Table Row -->
+				<TableView dataCollection = "books">
+					<TableViewRow title = "{title}" author="{author}" onClick="showBook"></TableViewRow>
+				</TableView>
+			</View>
 			<Toolbar bottom="0">
 			    <Items>
 			        <Button id="add" title="Add book" onClick="addBook"/>

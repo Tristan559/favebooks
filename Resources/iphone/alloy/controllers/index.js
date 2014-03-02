@@ -30,6 +30,24 @@ function Controller() {
         var addBookView = Alloy.createController("addbook", {}).getView();
         navMenu.openView(addBookView);
     }
+    function handleMenuClick(_event) {
+        "undefined" != typeof _event.row.id && openScreen(_event.row.id);
+    }
+    function openMenu() {
+        $.SlideMenu.Wrapper.left = "0dp";
+        $.AppWrapper.animate({
+            left: "200dp",
+            duration: 250,
+            curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
+        });
+    }
+    function closeMenu() {
+        $.AppWrapper.animate({
+            left: "0dp",
+            duration: 250,
+            curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
+        });
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -43,10 +61,19 @@ function Controller() {
         backgroundColor: "white",
         id: "__alloyId4"
     });
+    $.__views.SlideMenu = Alloy.createWidget("com.mcongrove.slideMenu", "widget", {
+        id: "SlideMenu",
+        __parentSymbol: $.__views.__alloyId4
+    });
+    $.__views.SlideMenu.setParent($.__views.__alloyId4);
+    $.__views.AppWrapper = Ti.UI.createView({
+        id: "AppWrapper"
+    });
+    $.__views.__alloyId4.add($.__views.AppWrapper);
     $.__views.__alloyId5 = Ti.UI.createTableView({
         id: "__alloyId5"
     });
-    $.__views.__alloyId4.add($.__views.__alloyId5);
+    $.__views.AppWrapper.add($.__views.__alloyId5);
     var __alloyId9 = Alloy.Collections["books"] || books;
     __alloyId9.on("fetch destroy change add remove reset", __alloyId10);
     var __alloyId13 = [];
@@ -81,6 +108,32 @@ function Controller() {
     myBooks.add(book);
     book.save();
     navMenu.open();
+    var nodes = [ {
+        menuHeader: "My Tabs",
+        id: 0,
+        title: "Home",
+        image: "/images/home.png"
+    }, {
+        id: 1,
+        title: "Contact",
+        image: "/images/phone.png"
+    }, {
+        id: 2,
+        title: "Settings",
+        image: "/images/gear.png"
+    } ];
+    $.SlideMenu.init({
+        nodes: nodes,
+        color: {
+            headingBackground: "#000",
+            headingText: "#FFF"
+        }
+    });
+    $.SlideMenu.setIndex(0);
+    $.SlideMenu.Nodes.addEventListener("click", handleMenuClick);
+    $.AppWrapper.addEventListener("swipe", function(_event) {
+        "right" == _event.direction ? openMenu() : "left" == _event.direction && closeMenu();
+    });
     __defers["__alloyId8!click!showBook"] && __alloyId8.addEventListener("click", showBook);
     __defers["$.__views.add!click!addBook"] && $.__views.add.addEventListener("click", addBook);
     _.extend($, exports);
