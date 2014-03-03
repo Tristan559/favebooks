@@ -2,11 +2,11 @@
 	width: "200dp",
 	top: "0dp",
 	left: "-200dp",
-	backgroundColor: "#000"
+	backgroundColor: "#111"
 },
 "#Nodes": {
 	top: "0dp",
 	backgroundColor: "#111",
-	separatorColor: "#222",
+	separatorColor: "#aaa",
 	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.SINGLE_LINE
 }
