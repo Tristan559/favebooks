@@ -1,10 +1,14 @@
 <Alloy>
 	<Collection src = "books"/>
 	<Window class="container">
-		<!-- Add Table View and Table Row -->
-		<TableView dataCollection = "books">
-			<TableViewRow title = "{title}" author="{author}" onClick="showBook"></TableViewRow>
-		</TableView>
+		<!-- Slide Menu -->
+		<Require type="widget" src="com.mcongrove.slideMenu" id="SlideMenu" />
+		<View id="AppWrapper">
+			<!-- Add Table View and Table Row -->
+			<TableView dataCollection = "books">
+				<TableViewRow title = "{title}" author="{author}" onClick="showBook"></TableViewRow>
+			</TableView>
+		</View>
         <Menu id="menu" platform="android">
             <MenuItem
             	title="Add book"

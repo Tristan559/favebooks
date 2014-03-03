@@ -51,6 +51,24 @@ function Controller() {
         var addBookView = Alloy.createController("addbook", {}).getView();
         navMenu.openView(addBookView);
     }
+    function handleMenuClick(_event) {
+        "undefined" != typeof _event.row.id && openScreen(_event.row.id);
+    }
+    function openMenu() {
+        $.SlideMenu.Wrapper.left = "0dp";
+        $.AppWrapper.animate({
+            left: "200dp",
+            duration: 250,
+            curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
+        });
+    }
+    function closeMenu() {
+        $.AppWrapper.animate({
+            left: "0dp",
+            duration: 250,
+            curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
+        });
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -65,10 +83,19 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
+    $.__views.SlideMenu = Alloy.createWidget("com.mcongrove.slideMenu", "widget", {
+        id: "SlideMenu",
+        __parentSymbol: $.__views.index
+    });
+    $.__views.SlideMenu.setParent($.__views.index);
+    $.__views.AppWrapper = Ti.UI.createView({
+        id: "AppWrapper"
+    });
+    $.__views.index.add($.__views.AppWrapper);
     $.__views.__alloyId4 = Ti.UI.createTableView({
         id: "__alloyId4"
     });
-    $.__views.index.add($.__views.__alloyId4);
+    $.__views.AppWrapper.add($.__views.__alloyId4);
     var __alloyId8 = Alloy.Collections["books"] || books;
     __alloyId8.on("fetch destroy change add remove reset", __alloyId9);
     $.__views.index.addEventListener("open", __alloyId12);
@@ -86,6 +113,32 @@ function Controller() {
     myBooks.add(book);
     book.save();
     navMenu.open();
+    var nodes = [ {
+        menuHeader: "My Tabs",
+        id: 0,
+        title: "Home",
+        image: "/images/home.png"
+    }, {
+        id: 1,
+        title: "Contact",
+        image: "/images/phone.png"
+    }, {
+        id: 2,
+        title: "Settings",
+        image: "/images/gear.png"
+    } ];
+    $.SlideMenu.init({
+        nodes: nodes,
+        color: {
+            headingBackground: "#000",
+            headingText: "#FFF"
+        }
+    });
+    $.SlideMenu.setIndex(0);
+    $.SlideMenu.Nodes.addEventListener("click", handleMenuClick);
+    $.AppWrapper.addEventListener("swipe", function(_event) {
+        "right" == _event.direction ? openMenu() : "left" == _event.direction && closeMenu();
+    });
     __defers["__alloyId7!click!showBook"] && __alloyId7.addEventListener("click", showBook);
     __defers["$.__views.__alloyId10!click!addBook"] && $.__views.__alloyId10.addEventListener("click", addBook);
     _.extend($, exports);
