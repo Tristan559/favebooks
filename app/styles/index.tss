@@ -11,4 +11,7 @@
        fontSize: '24' 
     }, 
     height: '40' 
+},
+"TableView": {
+	backgroundColor: "#fff"
 }
