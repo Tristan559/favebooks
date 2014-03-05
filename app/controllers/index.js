@@ -49,9 +49,14 @@ navMenu.open();
 // slide menu
 // Create our node items
 var nodes = [
-    { menuHeader: "My Tabs", id: 0, title: "Home", image: "/images/home.png" },
-    { id: 1, title: "Contact", image: "/images/phone.png" },
-    { id: 2, title: "Settings", image: "/images/gear.png" }
+    { id: 1, title: "Crafting", image: "/images/phone.png" },
+    { id: 2, title: "Potions", image: "/images/gear.png" },
+    { id: 3, title: "Enchanting", image: "/images/gear.png" },
+    { id: 4, title: "Biomes", image: "/images/gear.png" },
+    { id: 5, title: "Commands", image: "/images/gear.png" },
+    { id: 6, title: "Items", image: "/images/gear.png" },
+    { id: 7, title: "Game Modes", image: "/images/gear.png" },
+    { id: 8, title: "Update notes", image: "/images/gear.png" }
 ];
 
 // Initialize the slide menu
