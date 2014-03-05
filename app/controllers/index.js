@@ -49,7 +49,7 @@ navMenu.open();
 // slide menu
 // Create our node items
 var nodes = [
-    { id: 1, title: "Crafting", image: "/images/phone.png" },
+    { id: 1, title: "Crafting", image: "/images/Crafting_Table.png" },
     { id: 2, title: "Potions", image: "/images/gear.png" },
     { id: 3, title: "Enchanting", image: "/images/gear.png" },
     { id: 4, title: "Biomes", image: "/images/gear.png" },
