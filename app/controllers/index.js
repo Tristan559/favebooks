@@ -2,6 +2,14 @@
 var NavMenu = require('ui/navmenu');
 var navMenu = new NavMenu($.navGroupWin || null, $.index || null);
 
+// config
+var appConfig = {
+	menu :
+	{
+		slideDuration : 150
+	}	
+};
+
 // get books collection
 var myBooks = Alloy.Collections.books;
 
@@ -73,7 +81,7 @@ function openMenu() {
     $.SlideMenu.Wrapper.left = "0dp";
     $.AppWrapper.animate({
         left: "200dp",
-        duration: 250,
+        duration: appConfig.menu.slideDuration,
         curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
     });
 }
@@ -81,7 +89,7 @@ function openMenu() {
 function closeMenu() {
     $.AppWrapper.animate({
         left: "0dp",
-        duration: 250,
+        duration: appConfig.menu.slideDuration,
         curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
     });
 }
