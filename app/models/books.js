@@ -1,12 +1,14 @@
 exports.definition = {
 	config: {
 		columns: {
-		    "title": "text",
-		    "author": "text"
+			"id" : "INTEGER PRIMARY KEY AUTOINCREMENT",
+		    "title": "string",
+		    "author": "string"
 		},
 		adapter: {
 			type: "sql",
-			collection_name: "books"
+			collection_name: "books",
+			idAttribute: "id"
 		}
 	},
 	extendModel: function(Model) {
