@@ -10,8 +10,9 @@ var appConfig = {
 	}	
 };
 
-// get books collection
+// get books collection and fetch all records for display
 var myBooks = Alloy.Collections.books;
+myBooks.fetch();
 
 // create book record
 var book = Alloy.createModel('books', {
@@ -24,6 +25,7 @@ myBooks.add(book);
 
 // save book record
 book.save();
+
 
 function showBook(event)
 {
