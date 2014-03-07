@@ -10,22 +10,11 @@ var appConfig = {
 	}	
 };
 
-// get books collection and fetch all records for display
+// get books collection singleton
 var myBooks = Alloy.Collections.books;
+
+// and fetch existing records
 myBooks.fetch();
-
-// create book record
-var book = Alloy.createModel('books', {
-	title : 'Great Expectations',
-	author : 'Charles Dickens'
-});
-
-// add new book record to collection
-myBooks.add(book);
-
-// save book record
-book.save();
-
 
 function showBook(event)
 {
