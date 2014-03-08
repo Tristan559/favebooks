@@ -37,6 +37,7 @@ function addBook()
 // Open main window
 navMenu.open();
 
+
 // slide menu
 // Create our node items
 var nodes = [
@@ -64,6 +65,17 @@ $.SlideMenu.setIndex(0);
 
 // Add an event listener on the nodes
 $.SlideMenu.Nodes.addEventListener("click", handleMenuClick);
+
+function openScreen(id)
+{
+	switch(id)
+	{
+		case(1):
+			// crafting page
+			navMenu.openView(Alloy.createController("crafting", {}).getView());
+			break;			
+	}
+}
 
 // Handle the click event on a node
 function handleMenuClick(_event) {

@@ -1,0 +1,10 @@
+<Alloy>
+    <Window class="container">
+		<View class ="craftview" layout="vertical">
+			<ImageView 	id="crafting_gui_img" 
+						image="/images/crafting_gui.png"
+						onPostlayout="craftingOnPostLayout"
+			/>
+		</View>
+	</Window>
+</Alloy>

@@ -1,0 +1,15 @@
+".container" : 
+{
+  
+},
+"#crafting_gui_img":
+{
+	width: '90%'
+},
+".craftview" :
+{
+	top: '20',
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	backgroundColor: "#555"
+}
